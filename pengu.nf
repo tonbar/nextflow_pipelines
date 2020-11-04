@@ -1279,7 +1279,7 @@ process callMLSTARGENT {
 
     script:
     """
-    mlst --nopath --csv *.fna > ${RunID}_MLST.csv
+    mlst --nopath --csv *.fna | perl -pe 's/,(?=[^\\(]*\\))/|/g' > ${RunID}_MLST.csv
     """
 }
 
